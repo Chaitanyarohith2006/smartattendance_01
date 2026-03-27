@@ -6,20 +6,17 @@
 <title>Smart Attendance System</title>
 
 <style>
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: Arial, sans-serif;
 }
-
 
 body {
   background: linear-gradient(135deg, #eef2ff, #f8fafc);
   color: #333;
 }
-
 
 #loginPage {
   height: 100vh;
@@ -28,184 +25,89 @@ body {
   align-items: center;
 }
 
-
 .login-box {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(15px);
-  padding: 35px;
-  border-radius: 16px;
-  width: 320px;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  animation: fadeIn 0.6s ease-in-out;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 300px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .login-box h2 {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #2563eb;
 }
 
-
 .input-group {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .input-group input {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  outline: none;
-  transition: 0.3s;
-}
-
-.input-group input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 8px rgba(37,99,235,0.2);
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #2563eb, #1e40af);
+  padding: 10px;
+  background: #2563eb;
   border: none;
-  border-radius: 8px;
+  border-radius: 6px;
   color: white;
-  font-weight: 500;
   cursor: pointer;
-  transition: 0.3s;
 }
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(37,99,235,0.3);
-}
-
 
 #dashboard {
   display: none;
 }
 
-
 .sidebar {
-  width: 230px;
+  width: 220px;
   height: 100vh;
-  background: linear-gradient(180deg, #1e3a8a, #2563eb);
+  background: #1e3a8a;
   color: white;
   position: fixed;
-  padding: 25px 15px;
-  box-shadow: 5px 0 20px rgba(0,0,0,0.1);
-}
-
-.sidebar h3 {
-  margin-bottom: 30px;
-  text-align: center;
+  padding: 20px;
 }
 
 .sidebar button {
   background: none;
-  border: none;
   color: white;
-  padding: 12px;
+  border: none;
+  padding: 10px;
   width: 100%;
   text-align: left;
-  border-radius: 8px;
-  margin-bottom: 10px;
-  transition: 0.3s;
 }
-
-.sidebar button:hover {
-  background: rgba(255,255,255,0.2);
-  padding-left: 18px;
-}
-
 
 .main {
-  margin-left: 250px;
-  padding: 30px;
+  margin-left: 240px;
+  padding: 20px;
 }
-
-
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-
-.search {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  outline: none;
-  transition: 0.3s;
-}
-
-.search:focus {
-  border-color: #2563eb;
-}
-
 
 table {
   width: 100%;
   margin-top: 20px;
   border-collapse: collapse;
   background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
 }
 
 th {
   background: #2563eb;
   color: white;
-  padding: 12px;
-  text-align: left;
+  padding: 10px;
 }
 
 td {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-}
-
-tr:hover {
-  background: #f1f5f9;
-}
-
-
-.present {
-  color: #16a34a;
-  font-weight: bold;
-}
-
-.absent {
-  color: #dc2626;
-  font-weight: bold;
-}
-
-
-input[type="date"] {
   padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-bottom: 1px solid #ddd;
 }
 </style>
 </head>
 
 <body>
-
 
 <div id="loginPage">
   <div class="login-box">
@@ -217,10 +119,9 @@ input[type="date"] {
       <input type="password" id="password" placeholder="Password">
     </div>
     <button onclick="login()">Login</button>
-    <p id="error" style="color:red; margin-top:10px;"></p>
+    <p id="error" style="color:red;"></p>
   </div>
 </div>
-
 
 <div id="dashboard">
   <div class="sidebar">
@@ -231,15 +132,9 @@ input[type="date"] {
   </div>
 
   <div class="main">
-    
-   
     <div id="studentsSection">
-      <div class="topbar">
-        <h2>Student Records</h2>
-        <input class="search" placeholder="Search..." onkeyup="searchStudent(this.value)">
-      </div>
-
-      <table id="studentTable">
+      <h2>Students</h2>
+      <table>
         <thead>
           <tr>
             <th>Name</th>
@@ -249,17 +144,12 @@ input[type="date"] {
             <th>CGPA</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="studentTable"></tbody>
       </table>
     </div>
 
-    
     <div id="attendanceSection" style="display:none;">
-      <div class="topbar">
-        <h2>Attendance</h2>
-        <input type="date" id="date">
-      </div>
-
+      <h2>Attendance</h2>
       <button onclick="markAll()">Mark All Present</button>
 
       <table>
@@ -276,16 +166,14 @@ input[type="date"] {
       <br>
       <button onclick="saveAttendance()">Save Attendance</button>
     </div>
-
   </div>
 </div>
 
 <script>
-
 let students = [
   {name:"John", roll:"101", branch:"CSE", section:"A", cgpa:8.5},
   {name:"Alice", roll:"102", branch:"ECE", section:"B", cgpa:9.1},
-  {name:"David", roll:"103", branch:"IT", section:"A", cgpa:7.8},
+  {name:"David", roll:"103", branch:"IT", section:"A", cgpa:7.8}
 ];
 
 function login() {
@@ -306,87 +194,9 @@ function logout() {
   location.reload();
 }
 
-
 function showSection(section) {
   document.getElementById("studentsSection").style.display = "none";
   document.getElementById("attendanceSection").style.display = "none";
 
   if(section === "students") {
-    document.getElementById("studentsSection").style.display = "block";
-  } else {
-    document.getElementById("attendanceSection").style.display = "block";
-  }
-}
-
-
-function loadStudents() {
-  let tbody = document.querySelector("#studentTable tbody");
-  tbody.innerHTML = "";
-
-  students.forEach(s => {
-    let row = `<tr>
-      <td>${s.name}</td>
-      <td>${s.roll}</td>
-      <td>${s.branch}</td>
-      <td>${s.section}</td>
-      <td>${s.cgpa}</td>
-    </tr>`;
-    tbody.innerHTML += row;
-  });
-}
-
-
-function searchStudent(val) {
-  let filtered = students.filter(s => s.name.toLowerCase().includes(val.toLowerCase()));
-  let tbody = document.querySelector("#studentTable tbody");
-  tbody.innerHTML = "";
-
-  filtered.forEach(s => {
-    tbody.innerHTML += `<tr>
-      <td>${s.name}</td>
-      <td>${s.roll}</td>
-      <td>${s.branch}</td>
-      <td>${s.section}</td>
-      <td>${s.cgpa}</td>
-    </tr>`;
-  });
-}
-
-
-function loadAttendance() {
-  let table = document.getElementById("attendanceTable");
-  table.innerHTML = "";
-
-  students.forEach((s, i) => {
-    table.innerHTML += `
-      <tr>
-        <td>${s.name}</td>
-        <td>${s.roll}</td>
-        <td>
-          <input type="checkbox" id="att${i}">
-        </td>
-      </tr>`;
-  });
-}
-
-
-function markAll() {
-  students.forEach((_, i) => {
-    document.getElementById("att"+i).checked = true;
-  });
-}
-
-
-function saveAttendance() {
-  let result = students.map((s, i) => ({
-    name: s.name,
-    status: document.getElementById("att"+i).checked ? "Present" : "Absent"
-  }));
-
-  alert("Attendance Saved:\n" + JSON.stringify(result, null, 2));
-}
-
-</script>
-
-</body>
-</html>
+    document.getElementById("studentsSection").
